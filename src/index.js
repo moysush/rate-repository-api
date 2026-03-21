@@ -12,6 +12,8 @@ const startServer = async () => {
 
   await apolloServer.listen({ port: APOLLO_PORT });
 
+  apolloServer.applyMiddleware({ app, path: '/graphql' });
+
   httpServer.on('request', app.callback());
 
   await new Promise((resolve) =>
